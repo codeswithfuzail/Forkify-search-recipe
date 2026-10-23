@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forkify // Recipe Search Engine</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- HEADER NAVBAR -->
+        <header class="header">
+            <a href="#" class="header__logo">
+                <div class="header__logo-icon"><i class="fa-solid fa-utensils"></i></div>
+                forkify
+            </a>
+
+            <form class="search" id="search-form">
+                <input type="text" class="search__field" id="search-input"
+                    placeholder="Search over 1,000,000 recipes..." />
+                <button class="btn-grad">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+            </form>
+
+            <ul class="nav">
+                <li>
+                    <button class="nav__btn" data-bs-toggle="modal" data-bs-target="#addRecipeModal">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <span>Add Recipe</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="nav__btn" id="btn-bookmarks" data-bs-toggle="modal" data-bs-target="#bookmarksModal">
+                        <i class="fa-regular fa-bookmark"></i>
+                        <span>Bookmarks</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="nav__btn" id="btn-theme-toggle">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </header>
+
+        <div class="results-container">
+            <ul class="results-list" id="results-list">
+            </ul>
+
+            <div class="pagination" id="pagination">
+            </div>
+        </div>
+
+        <div class="recipe-container" id="recipe-view">
+            <div class="message">
+                <i class="fa-regular fa-face-smile"></i>
+                <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="bookmarksModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold">Bookmarked Recipes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush" id="bookmarks-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold">Add Custom Recipe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-recipe-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">URL / Source Link</label>
+                                <input type="url" name="sourceUrl" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Image URL</label>
+                                <input type="url" name="image" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Publisher</label>
+                                <input type="text" name="publisher" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Prep Time (mins)</label>
+                                <input type="number" name="cookingTime" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Servings</label>
+                                <input type="number" name="servings" class="form-control" required />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Ingredients (Comma separated, e.g.: "0.5,kg,Rice,
+                                    2,,Eggs")</label>
+                                <textarea name="ingredients" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-end">
+                            <button type="submit" class="btn-grad ms-auto">Upload Recipe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
